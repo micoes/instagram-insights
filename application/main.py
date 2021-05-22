@@ -1,15 +1,15 @@
 from flask import Flask
 from flask import render_template
 
-app = Flask("Hello")
+app = Flask("Analytics")
 
 
-@app.route('/hello')
+@app.route("/sign-in")
 def instagram():
-    return render_template('index.html', name="Michael")
+    return render_template("index.html", name="Michael")
 
 
-@app.route("/tescht")
+@app.route("/analytics")
 def test():
     return "success"
 
