@@ -5,10 +5,9 @@ import datetime
 with open("data/authentication.json") as open_file:
     access = json.load(open_file)
 
-user_access_token = access["user_access_token"]
 user_id = access["user_id"]
+user_access_token = access["user_access_token"]
 
-# convert datetime to unix timestamp
 since, until = "01/01/2021, 00:00:00", "01/10/2021, 23:59:59"
 date_since, date_until = datetime.datetime.strptime(since, "%m/%d/%Y, %H:%M:%S"), datetime.datetime.strptime(until, "%m/%d/%Y, %H:%M:%S")
 timestamp_since, timestamp_until = datetime.datetime.timestamp(date_since), datetime.datetime.timestamp(date_until)
