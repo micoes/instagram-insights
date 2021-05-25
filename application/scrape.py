@@ -2,8 +2,8 @@ import requests
 import json
 import datetime
 
-with open("data/authentication.json") as open_file:
-    access = json.load(open_file)
+with open("data/authentication.json") as json_file:
+    access = json.load(json_file)
 
 user_id = access["user_id"]
 user_access_token = access["user_access_token"]
@@ -21,22 +21,22 @@ instagram_user = f"https://graph.facebook.com/v10.0/{user_id}" \
 r = requests.get(instagram_user)
 # print(r.text)
 
-# get social interaction metrics about your Instagram Business or Creator Account within the specified range (max. 30 days = 2592000s)
+# get social interaction metrics about your Instagram Business or Creator Account within range (max. 30 days = 2592000s)
 # https://developers.facebook.com/docs/instagram-api/guides/insights
-insights = f"https://graph.facebook.com/v10.0/{user_id}" \
-           f"/insights?metric=impressions,reach&period=days_28&since={timestamp_since}&until={timestamp_until}" \
-           f"&access_token={user_access_token}"
+insights_impressions_reach = f"https://graph.facebook.com/v10.0/{user_id}" \
+                             f"/insights?metric=impressions,reach&period=days_28&since={timestamp_since}&until={timestamp_until}" \
+                             f"&access_token={user_access_token}"
 
-r = requests.get(insights)
+r = requests.get(insights_impressions_reach)
 # print(r.text)
 
 # get total number of new followers each day for your own Instagram Business or Creator Account within the specified range (max. 1 day = 86400s)
 # supports querying data only for the last 30 days excluding the current day
 timestamp = 1619215200
 
-insights_follower_count = f"https://graph.facebook.com/v10.0/{user_id}" \
-                          f"/insights?metric=follower_count&period=day&since={timestamp}&until={timestamp + 86400}" \
-                          f"&access_token={user_access_token}"
+insights_follower = f"https://graph.facebook.com/v10.0/{user_id}" \
+                    f"/insights?metric=follower_count&period=day&since={timestamp}&until={timestamp + 86400}" \
+                    f"&access_token={user_access_token}"
 
-r = requests.get(insights_follower_count)
+r = requests.get(insights_follower)
 print(r.text)
