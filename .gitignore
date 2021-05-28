@@ -106,3 +106,4 @@ venv.bak/
 # mypy
 .mypy_cache/
 /application/data/authentication.json
+/application/data/archive.json
