@@ -4,7 +4,7 @@ import datetime
 import os.path
 
 
-def initial(user_id, user_access_token):
+def instagram(user_id, user_access_token):
     # timestamps in API responses use UTC with zero offset and are formatted using ISO-8601
     # UTC (Universal Time) is 7 hours ahead of PST (Pacific Standard Time)
     until = datetime.datetime.today()
