@@ -7,13 +7,10 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.83.1">
     <title>Instagram Insights</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-
     
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <!-- Bootstrap core -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" type="text/css">
     
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/img/favicons/apple-touch-icon.png') }}" sizes="180x180">
@@ -50,11 +47,11 @@
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="text" id="floating_identifier" class="form-control" name="identifier" placeholder="User ID" required autofocus>
+      <input type="text" class="form-control" id="floating_identifier" name="identifier" placeholder="User ID" required autofocus>
       <label for="floating_identifier">User ID</label>
     </div>
     <div class="form-floating">
-      <input type="password" id="floating_token" class="form-control" name="token" placeholder="User Access Token" required autofocus>
+      <input type="password" class="form-control" id="floating_token" name="token" placeholder="User Access Token" required autofocus>
       <label for="floating_token">User Access Token</label>
     </div>
     <div class="checkbox mb-3">
