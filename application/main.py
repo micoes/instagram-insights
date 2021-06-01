@@ -15,10 +15,10 @@ app = Flask("application")
 def login():
     if os.path.exists("data/authentication.json"):
         with open("data/authentication.json", "r") as json_file:
-            access = json.load(json_file)
+            authentication = json.load(json_file)
 
-        user_access_token = access["user_access_token"]
-        user_id = access["user_id"]
+        user_access_token = authentication["user_access_token"]
+        user_id = authentication["user_id"]
 
         scrape.instagram(user_id, user_access_token)
 

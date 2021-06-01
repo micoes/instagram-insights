@@ -46,64 +46,68 @@
     
   </head>
   <body>
-    
+
+
 <main>
   <div class="container py-4">
-    <header class="pb-3 mb-4">
-      <a href="https://www.instagram.com/" target="_blank" class="d-flex align-items-center text-dark text-decoration-none">
-        <div>
+
+    <header>
+      <div class="row mb-4">
+        <div class="col-md-9 mb-4">
           <span class="fs-4">username</span>
           <span class="lead">biography</span>
         </div>
-      </a>
-      <div class="input-group date">
-        <input type="text" class="form-control" id="datepicker" placeholder="Select Date">
-        <!--
-        <input type="text" class="input-sm form-control" name="start">
-        <input type="text" class="input-sm form-control" name="end">
-        -->
-        <!--
-        <div class="form-floating">
-          <input type="text" class="form-control" id="datepicker" placeholder="Select Date">
-          <label for="datepicker">Select Date</label>
+        <div class="col-md-3 mb-4">
+          <div class="input-group date">
+            <input type="text" class="form-control" id="datepicker" placeholder="Select Date">
+            <!--
+            <input type="text" class="input-sm form-control" name="start">
+            <input type="text" class="input-sm form-control" name="end">
+            -->
+            <!--
+            <div class="form-floating">
+              <input type="text" class="form-control" id="datepicker" placeholder="Select Date">
+              <label for="datepicker">Select Date</label>
+            </div>
+            -->
+          </div>
+          <script type="text/javascript">
+            $(document).ready(function(){
+              $('#datepicker').datepicker({
+                  format: "dd-mm-yy",
+                  endDate: '-1d',
+                  todayHighlight: true
+              });
+            });
+          </script>
         </div>
-        -->
       </div>
-      <script type="text/javascript">
-      $(document).ready(function(){
-        $('#datepicker').datepicker({
-            format: "dd-mm-yy",
-            endDate: '-1d',
-            todayHighlight: true
-        });
-      });
-      </script>
     </header>
 
 
     <div class="row align-items-md-stretch">
       <div class="col-md-3 mb-4">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Follower</h2>
-          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+        <div class="h-100 p-5 bg-light border rounded-3 text-center">
+          <p class="display-2">1.5k</p>
+          <p>Follower</p>
         </div>
       </div>
       <div class="col-md-3 mb-4">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Follower evolution</h2>
-          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+        <div class="h-100 p-5 bg-light border rounded-3 text-center">
+          <p class="display-2">49</p>
+          <p>Follower evolution</p>
         </div>
       </div>
       <div class="col-md-3 mb-4">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Impressions</h2>
-          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+        <div class="h-100 p-5 bg-light border rounded-3 text-center">
+          <p class="display-2">24.9k</p>
+          <p>Impressions</p>
         </div>
       </div>
       <div class="col-md-3 mb-4">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Reach</h2>
-          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+        <div class="h-100 p-5 bg-light border rounded-3 text-center">
+          <p class="display-2">11.1k</p>
+          <p>Reach</p>
         </div>
       </div>
     </div>
@@ -111,13 +115,13 @@
     <div class="row align-items-md-stretch">
       <div class="col-md-6 mb-4">
         <div class="h-100 p-5 text-white bg-dark rounded-3">
-          <h2>Follower growth</h2>
+          <b>Follower growth</b>
           <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
         </div>
       </div>
       <div class="col-md-6 mb-4">
         <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Posts</h2>
+          <b>Posts</b>
           <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
         </div>
       </div>
@@ -127,6 +131,6 @@
 </main>
 
 
-    
+
   </body>
 </html>
