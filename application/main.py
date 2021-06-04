@@ -4,7 +4,7 @@ from flask import url_for
 from flask import render_template
 from flask import request
 
-import scrape
+import module
 import json
 import os.path
 
@@ -20,7 +20,7 @@ def login():
         user_access_token = authentication["user_access_token"]
         user_id = authentication["user_id"]
 
-        scrape.instagram(user_id, user_access_token)
+        module.scraping(user_id, user_access_token)
 
         return redirect(url_for("analysis"))
 
@@ -28,10 +28,10 @@ def login():
         if request.method == "POST":
             user_id = request.form["identifier"]
             user_access_token = request.form["token"]
-            remember_me = request.form.get("checkbox")  # BadRequestKeyError mit request.form["checkbox"], wenn nicht angewählt → Unterschiede?
+            remember_me = request.form.get("checkbox")
 
             try:
-                scrape.instagram(user_id, user_access_token)
+                module.scraping(user_id, user_access_token)
 
                 if remember_me == "true":
                     with open("data/authentication.json", "w", encoding="utf-8") as json_file:
@@ -48,10 +48,22 @@ def login():
             return render_template("index.html")
 
 
-@app.route("/insights")
+@app.route("/insights", methods=["GET", "POST"])
 def analysis():
-    print("Hi Analysis!")
-    return render_template("insights.html")
+    with open("data/archive.json", "r") as json_file:
+        archive = json.load(json_file)
+
+    if request.method == "POST":
+        start_date = request.form["since"]
+        end_date = request.form["until"]
+
+        return render_template("insights.html", username=archive["username"], biography=archive["biography"][:75])
+
+    else:
+        end_date = archive["data"][0]["values"][-1]["end_time"]
+        # start_date = end_date - 30 Tage
+
+        return render_template("insights.html", username=archive["username"], biography=archive["biography"][:75])
 
 
 if __name__ == "__main__":

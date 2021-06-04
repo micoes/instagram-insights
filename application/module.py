@@ -4,12 +4,12 @@ import datetime
 import os.path
 
 
-def instagram(user_id, user_access_token):
+def scraping(user_id, user_access_token):
     # timestamps in API responses use UTC with zero offset and are formatted using ISO-8601
     # UTC (Universal Time) is 7 hours ahead of PST (Pacific Standard Time)
     until = datetime.datetime.today()
-    until_processed = until.strftime("%d/%m/%Y, 00:00:00")
-    until_date = datetime.datetime.strptime(until_processed, "%d/%m/%Y, %H:%M:%S")
+    until_processed = until.strftime("%Y/%m/%d, 00:00:00")
+    until_date = datetime.datetime.strptime(until_processed, "%Y/%m/%d, %H:%M:%S")
     until_timestamp = datetime.datetime.timestamp(until_date)
     since_timestamp = until_timestamp - 2592000
 
@@ -72,4 +72,25 @@ if __name__ == "__main__":
     user_id = access["user_id"]
 
     instagram(user_id, user_access_token)
+"""
+
+"""
+def follower():
+    since, until = "2021-05-04", "2021-05-07"
+    until_processed = until.strftime("%Y/%m/%d, T07:00:00+0000")
+    print(until_processed)
+
+    # "2021-05-07T07:00:00+0000"
+
+
+follower()
+"""
+"""
+def follower_evolution():
+
+
+def impressions():
+
+
+def reach():
 """
