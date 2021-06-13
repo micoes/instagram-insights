@@ -8,8 +8,8 @@ def scraping(user_id, user_access_token):
     # timestamps in API responses use UTC with zero offset and are formatted using ISO-8601
     # UTC (Universal Time) is 7 hours ahead of PST (Pacific Standard Time)
     until = datetime.datetime.today()
-    until_processed = until.strftime("%Y/%m/%d, 00:00:00")
-    until_date = datetime.datetime.strptime(until_processed, "%Y/%m/%d, %H:%M:%S")
+    until_processed = until.strftime("%Y-%m-%dT07:00:00+0000")
+    until_date = datetime.datetime.strptime(until_processed, "%Y-%m-%dT%H:%M:%S+%f")
     until_timestamp = datetime.datetime.timestamp(until_date)
     since_timestamp = until_timestamp - 2592000
 
@@ -63,6 +63,58 @@ def scraping(user_id, user_access_token):
             json.dump(archive, json_file, indent=4)
 
 
+def filtering(start_date, end_date):
+    try:
+        since = datetime.datetime.strptime(start_date, "%Y-%m-%d")
+        until = datetime.datetime.strptime(end_date, "%Y-%m-%d")
+        since_processed = since + datetime.timedelta(days=1)
+        until_processed = until + datetime.timedelta(days=1)
+        since_date = since_processed.strftime("%Y-%m-%dT07:%M:%S+%f")
+        until_date = until_processed.strftime("%Y-%m-%dT07:%M:%S+%f")
+    except ValueError:
+        since_date = start_date
+        until_date = end_date
+
+    with open("data/archive.json", "r") as json_file:
+        archive = json.load(json_file)
+
+    archive_filtered = []
+
+    for dic in archive["data"][2]["values"]:
+        if until_date < dic["end_time"] <= archive["data"][2]["values"][-1]["end_time"]:
+            archive_filtered.append(dic["value"])
+
+    follower_count = sum(archive_filtered)
+    followers_count = archive["followers_count"]
+    follower = followers_count - follower_count
+
+    archive_filtered = []
+
+    for dic in archive["data"][2]["values"]:
+        if since_date <= dic["end_time"] <= until_date:  # beginnt erst bei Datum nach since_date → Fehler aufgrund?
+            archive_filtered.append(dic["value"])
+
+    follower_evolution = sum(archive_filtered)
+
+    archive_filtered = []
+
+    for dic in archive["data"][0]["values"]:
+        if since_date <= dic["end_time"] <= until_date:  # beginnt erst bei Datum nach since_date → Fehler aufgrund?
+            archive_filtered.append(dic["value"])
+
+    impressions = sum(archive_filtered)
+
+    archive_filtered = []
+
+    for dic in archive["data"][1]["values"]:
+        if since_date <= dic["end_time"] <= until_date:  # beginnt erst bei Datum nach since_date → Fehler aufgrund?
+            archive_filtered.append(dic["value"])
+
+    reach = sum(archive_filtered)
+
+    return follower, follower_evolution, impressions, reach
+
+
 """
 if __name__ == "__main__":
     with open("data/authentication.json", "r") as json_file:
@@ -71,26 +123,6 @@ if __name__ == "__main__":
     user_access_token = access["user_access_token"]
     user_id = access["user_id"]
 
-    instagram(user_id, user_access_token)
-"""
-
-"""
-def follower():
-    since, until = "2021-05-04", "2021-05-07"
-    until_processed = until.strftime("%Y/%m/%d, T07:00:00+0000")
-    print(until_processed)
-
-    # "2021-05-07T07:00:00+0000"
-
-
-follower()
-"""
-"""
-def follower_evolution():
-
-
-def impressions():
-
-
-def reach():
+    scraping(user_id, user_access_token)
+    follower(start_date, end_date)
 """

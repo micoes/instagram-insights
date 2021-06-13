@@ -62,8 +62,8 @@
           <!-- https://bootstrap-datepicker.readthedocs.io/en/latest/index.html -->
           <form method="POST">
             <div class="input-daterange input-group" id="datepicker">
-              <input type="text" class="input-sm form-control" name=since placeholder="Start date" required>
-              <input type="text" class="input-sm form-control" name=until placeholder="End date" required>
+              <input type="text" class="input-sm form-control" name=start_date placeholder="Start date" required>
+              <input type="text" class="input-sm form-control" name=end_date placeholder="End date" required>
               <button type="submit" class="btn btn-primary">
                 <img src="{{ url_for('static', filename='assets/img/brand/search.svg') }}" width="16" height="16">
               </button>
@@ -73,7 +73,7 @@
               $("#datepicker").datepicker({
                  format: "yyyy-mm-dd",
                  startDate: "-6m",
-                 endDate: "-2d",
+                 endDate: "-3d",
                  maxViewMode: 2,
                  autoclose: true,
                  keepEmptyValues: true,
@@ -89,25 +89,25 @@
     <div class="row align-items-md-stretch">
       <div class="col-md-3 mb-4">
         <div class="h-100 p-5 bg-light border rounded-3 text-center">
-          <p class="display-2">1.5k</p>
+          <p class="display-2">{{ follower }}</p>
           <p>Follower</p>
         </div>
       </div>
       <div class="col-md-3 mb-4">
         <div class="h-100 p-5 bg-light border rounded-3 text-center">
-          <p class="display-2">49</p>
+          <p class="display-2">{{ follower_evolution }}</p>
           <p>Follower evolution</p>
         </div>
       </div>
       <div class="col-md-3 mb-4">
         <div class="h-100 p-5 bg-light border rounded-3 text-center">
-          <p class="display-2">24.9k</p>
+          <p class="display-2">{{ impressions }}</p>
           <p>Impressions</p>
         </div>
       </div>
       <div class="col-md-3 mb-4">
         <div class="h-100 p-5 bg-light border rounded-3 text-center">
-          <p class="display-2">11.1k</p>
+          <p class="display-2">{{ reach }}</p>
           <p>Reach</p>
         </div>
       </div>
@@ -123,7 +123,7 @@
       <div class="col-md-6 mb-4">
         <div class="h-100 p-5 bg-light border rounded-3">
           <b>Posts</b>
-          <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+          <p>An awesome new graph, which will illustrate the development of posts figures, is coming very soon. Life's too short for ordinary posts.</p>
         </div>
       </div>
     </div>

@@ -54,16 +54,32 @@ def analysis():
         archive = json.load(json_file)
 
     if request.method == "POST":
-        start_date = request.form["since"]
-        end_date = request.form["until"]
+        start_date = request.form["start_date"]
+        end_date = request.form["end_date"]
 
-        return render_template("insights.html", username=archive["username"], biography=archive["biography"][:75])
+        follower, follower_evolution, impressions, reach = module.filtering(start_date, end_date)
+
+        return render_template("insights.html",
+                               username=archive["username"],
+                               biography=archive["biography"][:75],
+                               follower=follower,
+                               follower_evolution=follower_evolution,
+                               impressions=impressions,
+                               reach=reach)
 
     else:
+        start_date = archive["data"][0]["values"][0]["end_time"]
         end_date = archive["data"][0]["values"][-1]["end_time"]
-        # start_date = end_date - 30 Tage
 
-        return render_template("insights.html", username=archive["username"], biography=archive["biography"][:75])
+        follower, follower_evolution, impressions, reach = module.filtering(start_date, end_date)
+
+        return render_template("insights.html",
+                               username=archive["username"],
+                               biography=archive["biography"][:75],
+                               follower=follower,
+                               follower_evolution=follower_evolution,
+                               impressions=impressions,
+                               reach=reach)
 
 
 if __name__ == "__main__":
