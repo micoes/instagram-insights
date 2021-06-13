@@ -5,3 +5,5 @@ Um bei Instagram Follower zu erhalten, ist die Strategie anderen Nutzern zu folg
 Für dieses Problem existieren zwar Anwendungen von Dritt-Anbietern, welche Unfollower entsprechend tracken, dieser Lösungsansatz beinhaltet allerdings auch ein gewisses Datenschutz-Risiko, da persönliche Zugangsdaten verlangt werden. Weiter widerspricht das automatisierte Auswerten durch Anwendungen Dritter den AGB von Instagram und kann zu einem Ausschluss führen.
 
 Vor diesem Hintergrund möchte ich eine Webapplikation erstellen, welche aufzeigt, wem ich folge, der mir nicht folgt. Vorstellbar wäre zudem, den Projektumfang auf die Frage auszuweiten, wem meine Follower folgen, ich jedoch (noch) nicht.
+
+![Use Case Diagramm](https://github.com/micoes/prog2/tree/main/application/static/assets/img/graphics/use-case.svg)
