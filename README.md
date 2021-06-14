@@ -1,7 +1,7 @@
 # Instagram Insights
 Instagram Insights ermöglicht die Analyse deiner Instagram Business oder Creator Profile und der deiner Kunden. Mit den Ergebnissen lässt sich die jeweilige Entwicklung nachvollziehen sowie Kennzahlen für den Nachweis deines ROI messen.
 
-![Dashboard](/micoes/prog2/raw/main/application/static/assets/img/graphics/insights.jpg)
+![Dashboard](/application/static/assets/img/graphics/insights.jpg)
 
 ## Einführung
 Um Einblicke in die Schwächen und Stärken der eigenen Bemühungen zu erhalten, existieren verschiedene Anwendungen von Drittanbieter, dieser Lösungsansatz beinhaltet allerdings auch ein Risiko bezüglich Datenschutz. Da persönliche Zugangsdaten für eine Nutzung verlangt werden, ist das Vertrauen in den Anbieter vorausgesetzt. Neben den monatlichen Kosten, variiert eine Verwendung weiter mit der Anzahl der Nutzer. Dabei bietet Instagram mit der Instagram Graph API für Werbetreibende kostenlos die Möglichkeit, Daten und Statistiken einzusehen sowie Medien zu verwalten. Instagram Insights soll dafür ein Grundgerüst bieten, welches individuell erweiterbar ist.
@@ -45,7 +45,7 @@ Instagram Insights wurde in Python 3.9 entwickelt und funktioniert daher möglic
 
 Ausgangspunkt der Applikation bildet **main.py**, welches für eine Verwendung unter http://127.0.0.1:5000/ ausgeführt werden muss. Für eine Datenabfrage via API Call werden zudem jeweils User ID sowie User Access Token benötigt. Um eine wiederholte Eingabe zu vermeiden, besteht die Möglichkeit, diese durch Auswahl von **Remember me** lokal zu speichern. Sofern User ID und User Access Token korrekt eingegeben wurden, wird das Dashboard für eine Auswertung der Metriken anschliessend dargestellt, wobei sich die gewünschte Zeitspanne durch Auswahl von Start- und Enddatum abfragen lässt. Eine detaillierte Abbildung der Logik ist mit dem folgenden Use Case Diagramm gegeben.
 
-![Use Case Diagramm](/micoes/prog2/raw/main/application/static/assets/img/graphics/use-case.svg?sanitize=true)
+![Use Case Diagramm](/application/static/assets/img/graphics/use-case.svg?sanitize=true)
 
 ## Limitation
 Gegenüber der, bis im April 2018 verfügbaren, öffentlichen API ist die Instagram Graph API in verschiedenen Bereichen, aus Gründen des Datenschutzes, wesentlich restriktiver. So ist es beispielsweise nicht weiter möglich via API Call auf Profilinformationen von persönlichen Konten zuzugreifen. Insbesondere die Bestimmung von Unfollower wurde dadurch verunmöglicht.
