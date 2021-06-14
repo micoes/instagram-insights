@@ -5,6 +5,7 @@ from flask import render_template
 from flask import request
 
 import module
+import requests
 import json
 import os.path
 
@@ -42,8 +43,8 @@ def login():
 
                 return redirect(url_for("analysis"))
 
-            except TypeError:  # Falscheingabe von ID und/oder Token wird nicht erkannt → Fehler aufgrund?
-                print("Ihre Eingabe konnte nicht verarbeitet werden.")
+            except requests.exceptions.RequestException as e:
+                raise SystemExit(e)
         else:
             return render_template("index.html")
 

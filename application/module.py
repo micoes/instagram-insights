@@ -6,7 +6,7 @@ import os.path
 
 def scraping(user_id, user_access_token):
     # timestamps in API responses use UTC with zero offset and are formatted using ISO-8601
-    # UTC (Universal Time) is 7 hours ahead of PST (Pacific Standard Time)
+    # UTC (Universal Time) is 7 hours ahead of PDT (Pacific Daylight Time)
     until = datetime.datetime.today()
     until_processed = until.strftime("%Y-%m-%dT07:00:00+0000")
     until_date = datetime.datetime.strptime(until_processed, "%Y-%m-%dT%H:%M:%S+%f")
@@ -91,7 +91,7 @@ def filtering(start_date, end_date):
     archive_filtered = []
 
     for dic in archive["data"][2]["values"]:
-        if since_date <= dic["end_time"] <= until_date:  # beginnt erst bei Datum nach since_date → Fehler aufgrund?
+        if since_date <= dic["end_time"] <= until_date:
             archive_filtered.append(dic["value"])
 
     follower_evolution = sum(archive_filtered)
@@ -99,7 +99,7 @@ def filtering(start_date, end_date):
     archive_filtered = []
 
     for dic in archive["data"][0]["values"]:
-        if since_date <= dic["end_time"] <= until_date:  # beginnt erst bei Datum nach since_date → Fehler aufgrund?
+        if since_date <= dic["end_time"] <= until_date:
             archive_filtered.append(dic["value"])
 
     impressions = sum(archive_filtered)
@@ -107,22 +107,9 @@ def filtering(start_date, end_date):
     archive_filtered = []
 
     for dic in archive["data"][1]["values"]:
-        if since_date <= dic["end_time"] <= until_date:  # beginnt erst bei Datum nach since_date → Fehler aufgrund?
+        if since_date <= dic["end_time"] <= until_date:
             archive_filtered.append(dic["value"])
 
     reach = sum(archive_filtered)
 
     return follower, follower_evolution, impressions, reach
-
-
-"""
-if __name__ == "__main__":
-    with open("data/authentication.json", "r") as json_file:
-        access = json.load(json_file)
-
-    user_access_token = access["user_access_token"]
-    user_id = access["user_id"]
-
-    scraping(user_id, user_access_token)
-    follower(start_date, end_date)
-"""
