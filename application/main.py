@@ -5,7 +5,6 @@ from flask import render_template
 from flask import request
 
 import module
-import requests
 import json
 import os.path
 
@@ -43,8 +42,8 @@ def login():
 
                 return redirect(url_for("analysis"))
 
-            except requests.exceptions.RequestException as e:
-                raise SystemExit(e)
+            except KeyError:
+                return render_template("index.html")
         else:
             return render_template("index.html")
 
